@@ -9,7 +9,7 @@ const AdminLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3125/admin-login", {
+    fetch("https://gazi-foundation-server.vercel.app/admin-login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +17,7 @@ const AdminLogin = () => {
       body: JSON.stringify({ username, password }),
       credentials: "include",
     })
-      .then((res) => {       
+      .then((res) => {
         if (!res.ok) {
           setError("Invalid username or password");
           throw new Error("Error logging in");

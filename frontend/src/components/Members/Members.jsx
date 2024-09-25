@@ -18,7 +18,7 @@ const Members = () => {
   const [currentMember, setCurrentMember] = useState(null);
 
   function getMembers() {
-    fetch("http://localhost:3125/members")
+    fetch("https://gazi-foundation-server.vercel.app/members")
       .then((response) => response.json())
       .then((data) => setMembers(data))
       .catch((error) => console.error(error));
@@ -48,13 +48,16 @@ const Members = () => {
 
   // Handle saving the edited member details
   const handleSaveClick = () => {
-    fetch(`http://localhost:3125/members/${currentMember._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(currentMember),
-    })
+    fetch(
+      `https://gazi-foundation-server.vercel.app/members/${currentMember._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(currentMember),
+      }
+    )
       .then((res) => {
         if (!res.ok) {
           throw new Error("Error editing member");
@@ -72,7 +75,7 @@ const Members = () => {
   };
 
   const handleDeleteClick = (id) => {
-    fetch(`http://localhost:3125/members/${id}`, {
+    fetch(`https://gazi-foundation-server.vercel.app/members/${id}`, {
       method: "DELETE",
     }).then((res) => {
       if (!res.ok) {
@@ -85,7 +88,7 @@ const Members = () => {
   const handleAddMember = (event) => {
     event.preventDefault();
     setMembers([...members, formData]);
-    fetch(`http://localhost:3125/members`, {
+    fetch(`https://gazi-foundation-server.vercel.app/members`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

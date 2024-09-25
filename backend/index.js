@@ -5,13 +5,12 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
-
 const app = epxress();
 
 app.use(morgan("dev"));
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://gazi-foundation.vercel.app",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
@@ -28,10 +27,9 @@ mongoose
     console.log(err);
   });
 
-  app.use("/admin-login", require("./routes/adminLogin"));
+app.use("/admin-login", require("./routes/adminLogin"));
 app.use("/saving-details", require("./routes/savingDetails"));
 app.use("/members", require("./routes/members"));
-
 
 app.get("/", (req, res) => {
   res.json({ name: "gazi foundation" });

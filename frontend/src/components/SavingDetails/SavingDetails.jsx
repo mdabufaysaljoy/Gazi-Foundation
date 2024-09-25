@@ -14,7 +14,7 @@ const SavingDetails = () => {
   const [savingDetails, setSavingDetails] = useState({});
 
   function getSavingDetails() {
-    fetch("http://localhost:3125/saving-details")
+    fetch("https://gazi-foundation-server.vercel.app/saving-details")
       .then((response) => response.json())
       .then((data) => {
         const SavingDetails = data[0];
@@ -46,13 +46,16 @@ const SavingDetails = () => {
       tillDateNow,
       estematedNextYear,
     };
-    fetch(`http://localhost:3125/saving-details/${savingDetails._id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newSavingDetails),
-    })
+    fetch(
+      `https://gazi-foundation-server.vercel.app/saving-details/${savingDetails._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newSavingDetails),
+      }
+    )
       .then(getSavingDetails())
       .catch((error) => console.error(error));
     setIsEditing(false);
