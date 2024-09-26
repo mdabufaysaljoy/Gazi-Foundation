@@ -7,15 +7,24 @@ const AdminLogin = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
+    const handleChange = (e) => {
+    const { id, value } = e.target;
+    if (id === "username") {
+      setUsername(value);
+    } else {
+      setPassword(value);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("https://gazi-foundation-backend.vercel.app/admin-login", {
+    fetch("http://localhost:3125/admin-login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ username, password }),
-      credentials: "include",
+      credentials: "include", // If you are sending cookies
     })
       .then((res) => {
         if (!res.ok) {
@@ -26,7 +35,6 @@ const AdminLogin = () => {
       })
       .then((data) => {
         localStorage.setItem("token", data.token);
-        console.log(data);
         navigate("/");
       })
       .catch((error) => console.log(error));
@@ -51,7 +59,7 @@ const AdminLogin = () => {
               type="text"
               id="username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
               autoComplete="username"
@@ -68,7 +76,7 @@ const AdminLogin = () => {
               type="password"
               id="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
               autoComplete="current-password"
