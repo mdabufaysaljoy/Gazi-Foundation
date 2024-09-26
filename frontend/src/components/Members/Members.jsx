@@ -18,7 +18,7 @@ const Members = () => {
   const [currentMember, setCurrentMember] = useState(null);
 
   function getMembers() {
-    fetch("https://gazi-foundation-server.vercel.app/members")
+    fetch("https://gazi-foundation-backend.vercel.app/members")
       .then((response) => response.json())
       .then((data) => setMembers(data))
       .catch((error) => console.error(error));
@@ -49,7 +49,7 @@ const Members = () => {
   // Handle saving the edited member details
   const handleSaveClick = () => {
     fetch(
-      `https://gazi-foundation-server.vercel.app/members/${currentMember._id}`,
+      `https://gazi-foundation-backend.vercel.app/members/${currentMember._id}`,
       {
         method: "PUT",
         headers: {
@@ -75,7 +75,7 @@ const Members = () => {
   };
 
   const handleDeleteClick = (id) => {
-    fetch(`https://gazi-foundation-server.vercel.app/members/${id}`, {
+    fetch(`https://gazi-foundation-backend.vercel.app/members/${id}`, {
       method: "DELETE",
     }).then((res) => {
       if (!res.ok) {
@@ -88,7 +88,7 @@ const Members = () => {
   const handleAddMember = (event) => {
     event.preventDefault();
     setMembers([...members, formData]);
-    fetch(`https://gazi-foundation-server.vercel.app/members`, {
+    fetch(`https://gazi-foundation-backend.vercel.app/members`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

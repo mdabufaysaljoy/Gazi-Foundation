@@ -14,7 +14,7 @@ const SavingDetails = () => {
   const [savingDetails, setSavingDetails] = useState({});
 
   function getSavingDetails() {
-    fetch("https://gazi-foundation-server.vercel.app/saving-details")
+    fetch("https://gazi-foundation-backend.vercel.app/saving-details")
       .then((response) => response.json())
       .then((data) => {
         const SavingDetails = data[0];
@@ -47,7 +47,7 @@ const SavingDetails = () => {
       estematedNextYear,
     };
     fetch(
-      `https://gazi-foundation-server.vercel.app/saving-details/${savingDetails._id}`,
+      `https://gazi-foundation-backend.vercel.app/saving-details/${savingDetails._id}`,
       {
         method: "PUT",
         headers: {
