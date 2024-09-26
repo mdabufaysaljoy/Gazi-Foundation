@@ -8,6 +8,8 @@ require("dotenv").config();
 const app = epxress();
 
 app.use(morgan("dev"));
+app.use(cookieParser());
+app.use(epxress.json());
 app.use(
   cors({
     origin: "https://gazi-foundation.vercel.app",
@@ -15,8 +17,7 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-app.use(cookieParser());
-app.use(epxress.json());
+
 
 mongoose
   .connect("mongodb+srv://mdabufaysaljoy:faysal17@users.wit5elw.mongodb.net/gazifoundation")
