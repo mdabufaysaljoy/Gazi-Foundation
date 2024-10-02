@@ -9,9 +9,11 @@ const app = epxress();
 
 app.use(
   cors({
-    origin: "https://gazi-foundation.vercel.app",
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: "https://gazi-foundation.vercel.app", // Frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Include OPTIONS for preflight
+  allowedHeaders: ["Content-Type", "Authorization"], // Ensure necessary headers are allowed
+  credentials: true, // Allow credentials (cookies, tokens)
+
   })
 );
 
