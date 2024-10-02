@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(epxress.json());
 
 mongoose
-  .connect("mongodb+srv://mdabufaysaljoy:faysal17@users.wit5elw.mongodb.net/gazifoundation")
+  .connect(process.env.DATABASE_URL)
   .then(() => {
     console.log("MongoDB connected");
   })
