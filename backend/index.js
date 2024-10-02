@@ -18,6 +18,7 @@ app.use(
 app.use(morgan("dev"));
 app.use(cookieParser());
 app.use(epxress.json());
+app.use(epxress.urlencoded({ extended: true }));
 
 mongoose
   .connect(process.env.DATABASE_URL)
