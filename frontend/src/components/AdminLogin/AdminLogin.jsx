@@ -18,7 +18,7 @@ const AdminLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("https://gazi-foundation.vercel.app/admin-login", {
+    fetch("https://gazi-foundation.vercel-backend.app/admin-login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
