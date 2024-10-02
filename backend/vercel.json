@@ -16,6 +16,7 @@
   ],
   "env": {
     "NODE_ENV": "production", 
-    "DATABASE_URL": "mongodb+srv://mdabufaysaljoy:faysal17@users.wit5elw.mongodb.net/gazifoundation"
+    "DATABASE_URL": "mongodb+srv://mdabufaysaljoy:faysal17@users.wit5elw.mongodb.net/gazifoundation",
+    "JWT_SECRET": "jwt_secret_token"
   }
 }
