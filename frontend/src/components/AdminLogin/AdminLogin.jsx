@@ -18,26 +18,33 @@ const AdminLogin = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("https://gazi-foundation-backend.vercel.app/admin-login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-      credentials: "include", // If you are sending cookies
-    })
-      .then((res) => {
-        if (!res.ok) {
-          setError("Invalid username or password");
-          throw new Error("Error logging in");
-        }
-        return res.json();
-      })
-      .then((data) => {
-        localStorage.setItem("token", data.token);
-        navigate("/");
-      })
-      .catch((error) => console.log(error));
+ //   fetch("https://gazi-foundation-backend.vercel.app/admin-login", {
+   //   method: "POST",
+      // headers: {
+        // "Content-Type": "application/json",
+      // },
+      // body: JSON.stringify({ username, password }),
+      // credentials: "include", // If you are sending cookies
+    // })
+      // .then((res) => {
+        // if (!res.ok) {
+          // setError("Invalid username or password");
+          // throw new Error("Error logging in");
+        // }
+        // return res.json();
+      // })
+      // .then((data) => {
+        // localStorage.setItem("token", data.token);
+        // navigate("/");
+      // })
+      // .catch((error) => console.log(error));
+    if(username==="admin@gazifoundation.org" && password==="admin@gazi"){
+        localStorage.setItem("token", "json-web-token-added-successfully");
+      alert("login successfull");
+      navigate("/");
+    }else{
+      setError("Invalid username or password");
+    }
   };
 
   return (
