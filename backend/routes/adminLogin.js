@@ -4,6 +4,10 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/User");
 
+router.get("/", (req,res)=>{
+res.json({message:"admin login get successfully!"})
+})
+
 router.post("/", async (req, res) => {
   try {
     const { username, password } = req.body;
